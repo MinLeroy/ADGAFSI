@@ -12,7 +12,7 @@ $zonas = $conn->query("SELECT id_zona, nombre_zona FROM ZONA")->fetchAll();
     </div>
 
     <div class="card-body">
-        <form action="controles/clientes.php" method="POST">
+        <form action="controles/cliente.php" method="POST">
             <input type="hidden" name="accion" value="agregar">
 
             <div class="form-grid">
