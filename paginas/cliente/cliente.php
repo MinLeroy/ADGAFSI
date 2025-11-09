@@ -57,7 +57,7 @@ $clientes = obtenerClientes($conn);
                             <a href="home.php?page=cliente/ver&id=<?= $c['id_cliente'] ?>" class="btn btn-sm btn-info">
                                 <i class="ri-eye-line"></i>
                             </a>
-                            <form action="controles/clientes.php" method="POST" style="display:inline;">
+                            <form action="controles/cliente.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="accion" value="eliminar">
                                 <input type="hidden" name="id_cliente" value="<?= $c['id_cliente'] ?>">
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar cliente?')">
