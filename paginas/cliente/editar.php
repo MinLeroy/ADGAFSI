@@ -24,7 +24,7 @@ $zonas = $conn->query("SELECT id_zona, nombre_zona FROM ZONA")->fetchAll();
     </div>
 
     <div class="card-body">
-        <form action="controles/clientes.php" method="POST">
+        <form action="controles/cliente.php" method="POST">
             <input type="hidden" name="accion" value="editar">
             <input type="hidden" name="id_cliente" value="<?= $cliente['id_cliente'] ?>">
 

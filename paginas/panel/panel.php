@@ -1,12 +1,10 @@
 <?php
-include_once("BD/conexion.php");
+include_once(__DIR__ . '/../../BD/conexion.php');
 
 try {
-    // Obtener los datos del panel desde la vista PANEL_GENERAL
     $sql = "SELECT * FROM PANEL_GENERAL";
     $stmt = $conn->query($sql);
     $panel = $stmt->fetch(PDO::FETCH_ASSOC);
-
 } catch (PDOException $e) {
     echo "<div class='message error'>Error al obtener datos del panel: " . $e->getMessage() . "</div>";
     $panel = [
@@ -52,7 +50,6 @@ try {
     </div>
 </div>
 
-<!-- 🧾 Explicación del panel -->
 <div class="card">
     <div class="card-header">Resumen General</div>
     <div class="card-body">
@@ -66,4 +63,5 @@ try {
         </ul>
     </div>
 </div>
+
 <script src="visual/js/panel.js"></script>

@@ -1,5 +1,5 @@
 <?php
-$serverName = "localhost\\SQLEXPRESS"; // Nombre de tu servidor SQL
+$serverName = "localhost\\SQLEXPRESS"; 
 $database = "ADGAFSI";
 
 try {

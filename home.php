@@ -30,10 +30,10 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'panel';
             // SISTEMA DE RUTAS DINÁMICO
             // ========================================
 
-            // 1️⃣ Intenta cargar directamente la ruta (ej: paginas/cliente/agregar.php)
+            // Intenta cargar directamente la ruta (ej: paginas/cliente/agregar.php)
             $rutaDirecta = "paginas/$page.php";
 
-            // 2️⃣ Si no existe, intenta el formato carpeta/página (ej: paginas/cliente/cliente.php)
+            // Si no existe, intenta el formato carpeta/página (ej: paginas/cliente/cliente.php)
             $partes = explode('/', $page);
             $carpeta = $partes[0] ?? '';
             $archivo = end($partes);
