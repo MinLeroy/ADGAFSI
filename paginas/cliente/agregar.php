@@ -1,5 +1,4 @@
 <?php
-
 include_once(__DIR__ . "/../../datos/clienteDatos.php");
 
 // Obtener listas desde la conexión
@@ -16,6 +15,9 @@ $zonas = $conn->query("
     FROM ZONA 
     ORDER BY nombre_zona
 ")->fetchAll(PDO::FETCH_ASSOC);
+
+// servicios desde modelo
+$servicios = obtenerServicios($conn);
 ?>
 
 <div class="card">
@@ -53,6 +55,25 @@ $zonas = $conn->query("
                             </option>
                         <?php endforeach; ?>
                     </select>
+                </div>
+
+                <!-- Servicio -->
+                <div class="form-group">
+                    <label>Servicio</label>
+                    <select name="id_servicio" required>
+                        <option value="">— Selecciona servicio —</option>
+                        <?php foreach ($servicios as $s): ?>
+                            <option value="<?= $s['id_servicio'] ?>">
+                                <?= htmlspecialchars($s['nombre_servicio'] . ' (' . $s['tipo_servicio'] . ' - ' . $s['velocidad_megas'] . ' Mbps)') ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <!-- IP -->
+                <div class="form-group">
+                    <label>IP del Cliente</label>
+                    <input type="text" name="ip_cliente" placeholder="Ej: 192.168.1.100 o IPv6">
                 </div>
 
                 <!-- Datos personales -->

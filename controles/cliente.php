@@ -10,6 +10,7 @@ if (!isset($conn)) {
 // ============================
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['accion'] === 'agregar') {
     try {
+        // pasar directamente $_POST al modelo (el modelo filtrará lo necesario)
         agregarCliente($conn, $_POST);
         header("Location: ../home.php?page=cliente&msg=ok");
         exit;
@@ -23,46 +24,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['accion'] === 'agregar') {
 // ============================
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['accion'] === 'editar') {
     try {
+        // validar id
         $id = intval($_POST['id_cliente']);
-        $sql = "UPDATE CLIENTE SET 
-                    id_empleado = :id_empleado,
-                    id_zona = :id_zona,
-                    apellido_paterno = :apellido_paterno,
-                    apellido_materno = :apellido_materno,
-                    nombre_cliente = :nombre_cliente,
-                    telefono1 = :telefono1,
-                    telefono2 = :telefono2,
-                    correo_cliente = :correo_cliente,
-                    calle = :calle,
-                    numero = :numero,
-                    colonia = :colonia,
-                    municipio = :municipio,
-                    codigo_postal = :codigo_postal,
-                    id_estatus = :id_estatus,
-                    observaciones = :observaciones
-                WHERE id_cliente = :id";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([
-            ':id_empleado' => $_POST['id_empleado'] ?: null,
-            ':id_zona' => $_POST['id_zona'] ?: null,
-            ':apellido_paterno' => $_POST['apellido_paterno'],
-            ':apellido_materno' => $_POST['apellido_materno'],
-            ':nombre_cliente' => $_POST['nombre_cliente'],
-            ':telefono1' => $_POST['telefono1'],
-            ':telefono2' => $_POST['telefono2'],
-            ':correo_cliente' => $_POST['correo_cliente'],
-            ':calle' => $_POST['calle'],
-            ':numero' => $_POST['numero'],
-            ':colonia' => $_POST['colonia'],
-            ':municipio' => $_POST['municipio'],
-            ':codigo_postal' => $_POST['codigo_postal'],
-            ':id_estatus' => $_POST['id_estatus'],
-            ':observaciones' => $_POST['observaciones'],
-            ':id' => $id
-        ]);
-        header("Location: ../home.php?page=cliente&msg=editado");
-        exit;
-    } catch (PDOException $e) {
+        $_POST['id_cliente'] = $id;
+
+        $ok = actualizarCliente($conn, $_POST);
+        if ($ok) {
+            header("Location: ../home.php?page=cliente&msg=editado");
+            exit;
+        } else {
+            throw new Exception("No se pudo actualizar el cliente.");
+        }
+    } catch (Exception $e) {
         die("Error al editar cliente: " . $e->getMessage());
     }
 }
@@ -73,11 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['accion'] === 'editar') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['accion'] === 'eliminar') {
     try {
         $id = intval($_POST['id_cliente']);
-        $stmt = $conn->prepare("DELETE FROM CLIENTE WHERE id_cliente = :id");
-        $stmt->execute([':id' => $id]);
+        eliminarCliente($conn, $id);
         header("Location: ../home.php?page=cliente&msg=eliminado");
         exit;
     } catch (PDOException $e) {
         die("Error al eliminar cliente: " . $e->getMessage());
     }
 }
+?>
