@@ -74,6 +74,10 @@ $contratos = obtenerContratos($conn);
 
 <?php if (isset($_GET['msg'])): ?>
     <div class="alert alert-success mt-3">
-        <?= $_GET['msg'] === 'ok' ? '✅ Contrato agregado.' : ($_GET['msg']==='editado' ? '✏️ Actualizado.' : '🗑️ Eliminado.') ?>
+        <?php
+            if ($_GET['msg'] === 'ok') echo '✅ Contrato agregado correctamente.';
+            elseif ($_GET['msg'] === 'editado') echo '✏️ Contrato actualizado correctamente.';
+            elseif ($_GET['msg'] === 'eliminado') echo '🗑️ Contrato eliminado correctamente.';
+        ?>
     </div>
 <?php endif; ?>

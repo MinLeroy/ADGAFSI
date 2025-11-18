@@ -16,5 +16,6 @@
         <li class="nav-item"><a href="home.php?page=instalacion" class="nav-link"><i class="ri-router-line nav-icon"></i>Instalaciones</a></li>
         <li class="nav-item"><a href="home.php?page=pago" class="nav-link"><i class="ri-money-dollar-circle-line nav-icon"></i>Pagos</a></li>
         <li class="nav-item"><a href="home.php?page=articulo" class="nav-link"><i class="ri-box-3-line nav-icon"></i>Artículos</a></li>
+        <li class="nav-item"><a href="index.php" class="nav-link"><i class="ri-logout-box-line nav-icon"></i> Cerrar Sesión</a></li>
     </ul>
 </div>

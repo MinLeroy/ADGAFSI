@@ -70,9 +70,9 @@ $zonas = obtenerZonas($conn);
 <?php if (isset($_GET['msg'])): ?>
     <div class="alert alert-success mt-3">
         <?php
-            if ($_GET['msg'] === 'ok') echo 'Zona agregada correctamente.';
-            elseif ($_GET['msg'] === 'editado') echo 'Zona actualizada.';
-            elseif ($_GET['msg'] === 'eliminado') echo 'Zona eliminada.';
+            if ($_GET['msg'] === 'ok') echo '✅ Zona agregada correctamente.';
+            elseif ($_GET['msg'] === 'editado') echo '✏️ Zona actualizada correctamente.';
+            elseif ($_GET['msg'] === 'eliminado') echo '🗑️ Zona eliminada correctamente.';
         ?>
     </div>
 <?php endif; ?>

@@ -13,10 +13,11 @@ async function actualizarPanel() {
     document.getElementById("contratos_vigentes").textContent = data.contratos_vigentes ?? 0;
     document.getElementById("instalaciones_pendientes").textContent = data.instalaciones_pendientes ?? 0;
     document.getElementById("pagos_proximos").textContent = data.pagos_proximos ?? 0;
+
   } catch (err) {
     console.error("Error al actualizar el panel:", err);
   }
 }
 
-setInterval(actualizarPanel, 30000); // cada 30s
+setInterval(actualizarPanel, 30000);
 actualizarPanel();

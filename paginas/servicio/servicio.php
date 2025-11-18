@@ -45,7 +45,6 @@ $servicios = obtenerServicios($conn);
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Tipo</th>
-                        <th>Velocidad</th>
                         <th>Costo Regular</th>
                         <th>Estatus</th>
                         <th>Acciones</th>
@@ -59,7 +58,6 @@ $servicios = obtenerServicios($conn);
                         <td><?= $s['id_servicio'] ?></td>
                         <td><?= htmlspecialchars($s['nombre_servicio']) ?></td>
                         <td><?= htmlspecialchars($s['tipo_servicio']) ?></td>
-                        <td><?= htmlspecialchars($s['velocidad_megas']) ?> Mbps</td>
                         <td>$<?= number_format($s['costo_regular'], 2) ?></td>
 
                         <td>

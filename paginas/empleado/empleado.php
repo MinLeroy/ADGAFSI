@@ -85,9 +85,10 @@ $empleados = obtenerEmpleados($conn);
 <?php if (isset($_GET['msg'])): ?>
     <div class="alert alert-success mt-3">
         <?php
-            if ($_GET['msg'] === 'ok') echo 'Empleado agregado correctamente.';
-            elseif ($_GET['msg'] === 'editado') echo 'Empleado actualizado.';
-            elseif ($_GET['msg'] === 'eliminado') echo 'Empleado eliminado.';
+            if ($_GET['msg'] === 'ok') echo '✅ Empleado agregado correctamente.';
+            elseif ($_GET['msg'] === 'editado') echo '✏️ Empleado actualizado correctamente.';
+            elseif ($_GET['msg'] === 'eliminado') echo '🗑️ Empleado eliminado correctamente.';
         ?>
     </div>
 <?php endif; ?>
+
